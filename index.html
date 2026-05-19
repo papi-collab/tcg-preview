@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<title>The Clothing Guys — Premium Garment Manufacturing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#D4AF37;--gold-dark:#b89023;--black:#111;--text:#1b1b1b;--muted:#666;--soft:#f7f4ec;--line:#e7dfc9;--radius:16px;--font-body:'Inter',Arial,sans-serif;--font-display:'Oswald','Inter',Arial,sans-serif;--gap:24px;--section-pad:84px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);color:var(--text);background:#fff;line-height:1.6;font-weight:400}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+
+h1,h2,h3,h4,.h1,.section-title,.eyebrow{font-family:var(--font-display);font-weight:700;letter-spacing:0}
+h1,.h1{font-size:clamp(2.6rem,6vw,5.4rem);line-height:.98;letter-spacing:-.005em;margin:14px 0 22px;font-weight:700;text-transform:uppercase}
+.section-title{font-size:clamp(2rem,4vw,3.8rem);line-height:1.02;letter-spacing:-.005em;margin:0 0 14px;font-weight:700;text-transform:uppercase}
+h3{font-size:1.4rem;margin:0 0 10px;font-weight:600;letter-spacing:.005em;text-transform:uppercase}
+h4{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.95rem;margin:0 0 12px}
+.eyebrow{display:inline-block;font-weight:600;color:var(--gold-dark);letter-spacing:.18em;text-transform:uppercase;font-size:.88rem;font-family:var(--font-display)}
+.brand{display:flex;align-items:center}
+
+.text-center{text-align:center}
+.intro-center{margin:0 auto 24px;text-align:center}
+.mt-24{margin-top:24px}
+
+.nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee;box-shadow:0 2px 16px rgba(0,0,0,.04)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:96px}
+.nav-links{display:flex;gap:26px;align-items:center;font-family:var(--font-display);font-weight:500}
+.nav-links a{text-transform:uppercase;letter-spacing:.06em;font-size:.82rem;font-weight:600;font-family:var(--font-display)}
+.nav-logo{height:78px;width:auto;display:block;transition:opacity .25s ease,visibility .25s ease}
+body.home .nav-logo.nav-logo-hidden{opacity:0;visibility:hidden}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 22px;font-weight:700;cursor:pointer;transition:.2s;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em;font-size:.88rem}
+.btn-gold{background:var(--gold);color:#111}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-1px)}
+.btn-outline{border:1px solid var(--gold);color:#111;background:#fff}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+.btn-row.btn-row-left{justify-content:flex-start}
+
+.banner{background:var(--gold);color:white;padding:48px 0}
+.banner-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:var(--gap)}
+.banner-logo-wrap{display:flex;align-items:center;justify-content:flex-start}
+.banner-logo-img{max-width:420px;width:100%;height:auto;display:block}
+
+.hero{position:relative;overflow:hidden;background:#fff}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.98),rgba(255,255,255,.9),rgba(255,255,255,.64)),linear-gradient(135deg,#2a2a2a 0%,#4a4a4a 50%,#6a6a6a 100%);opacity:.9}
+.hero-inner{position:relative;padding:86px 0 96px;max-width:820px}
+.lead{font-family:var(--font-body);font-size:clamp(1.1rem,2vw,1.4rem);color:#333;max-width:760px;font-weight:400;line-height:1.55;margin:0 0 28px}
+
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin:38px 0;padding:24px 0;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold)}
+.metric{text-align:center}
+.metric b{display:block;font-family:var(--font-display);font-weight:700;color:#111;font-size:2.6rem;line-height:1;letter-spacing:-.01em;margin-bottom:6px}
+.metric span{font-family:var(--font-display);font-size:.78rem;color:#333;font-weight:500;text-transform:uppercase;letter-spacing:.1em;display:block}
+.banner .metric b{color:#fff}
+.banner .metric span{color:#fff}
+.banner .metrics{border-color:rgba(255,255,255,.4);margin:0;padding:0;border:none;width:100%}
+
+.section{padding:var(--section-pad) 0}
+.section.alt{background:var(--soft)}
+.section.dark{background:#111;color:#fff}
+.section.dark .intro{color:#e9e9e9}
+.section.dark h1,.section.dark h2,.section.dark h3,.section.dark .section-title{color:#fff}
+.gold-line{height:4px;background:var(--gold);width:100%;margin:0 0 38px}
+.intro{font-family:var(--font-body);font-size:1.15rem;max-width:850px;color:#444;line-height:1.6}
+
+.grid-2,.grid-3,.grid-4{display:grid;gap:var(--gap)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+
+.card{background:#fff;border:1px solid var(--line);border-top:5px solid var(--gold);border-radius:var(--radius);padding:28px;box-shadow:0 12px 34px rgba(0,0,0,.055);display:flex;flex-direction:column;height:100%}
+.card h3{font-size:1.3rem;margin:0 0 10px}
+.card p{font-family:var(--font-body);font-weight:400;margin:0 0 12px}
+.card p:last-child{margin-bottom:0}
+.card .btn,.card>a:last-child{margin-top:auto}
+.card-link{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
+.card-link .card{height:100%}
+.card-link:hover .card{box-shadow:0 18px 42px rgba(0,0,0,.09);transform:translateY(-2px);transition:.25s}
+.card-center{text-align:center}
+
+.icon{width:62px;height:62px;background:#111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:18px;color:var(--gold);font-size:1.1rem;border:3px solid var(--gold);box-shadow:0 4px 12px rgba(0,0,0,.1);font-family:var(--font-display);letter-spacing:.02em}
+
+.testimonial-stage{position:relative;min-height:280px}
+.testimonial{display:none}
+.testimonial.active{display:block}
+.quote-box{background:#fff;border-left:6px solid var(--gold);border-radius:18px;padding:32px;box-shadow:0 14px 34px rgba(0,0,0,.07)}
+.stars{color:var(--gold);font-size:1.2rem;margin-bottom:12px}
+.quote-box blockquote{font-family:var(--font-body);font-size:1.1rem;line-height:1.65;font-style:italic;color:#222;margin:0 0 16px;font-weight:400}
+.quote-box p{font-family:var(--font-body);margin:0}
+.quote-box strong{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+
+.testimonial-controls{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:28px}
+.testimonial-dots{display:flex;gap:10px}
+.testimonial-dot{width:11px;height:11px;border-radius:50%;border:2px solid var(--gold);background:transparent;cursor:pointer;padding:0;transition:.2s;display:block}
+.testimonial-dot.active{background:var(--gold);transform:scale(1.15)}
+.testimonial-nav{display:flex;gap:12px}
+
+.form{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 16px 38px rgba(0,0,0,.08);display:flex;flex-direction:column}
+.form h3{margin-bottom:18px}
+input,select,textarea{width:100%;padding:14px 15px;border:1px solid #ddd;border-radius:12px;font:inherit;font-family:var(--font-body);margin-bottom:14px;background:#fff}
+.form .btn{margin-top:auto;width:100%}
+
+.footer{background:#111;color:white;padding:52px 0 26px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}
+.footer a{color:#ddd;font-family:var(--font-body);display:block;padding:4px 0}
+.footer h4{color:#fff;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:.92rem;margin:0 0 12px}
+.footer-contact-h4{margin-top:16px}
+.footer-desc{color:#aaa;font-size:.92rem;margin-top:10px;line-height:1.55}
+.footer-bottom{text-align:center;padding-top:28px;margin-top:28px;border-top:1px solid #333;color:#777;font-size:.85rem}
+.footer-bottom a{display:inline}
+.footer-logo{max-width:280px;height:auto;margin-bottom:18px;display:block}
+
+.sticky-cta{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:10px;transition:opacity .3s ease,visibility .3s ease}
+.sticky-cta a{box-shadow:0 12px 28px rgba(0,0,0,.22)}
+.sticky-cta.sticky-cta-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.sticky-cta .btn-whatsapp{background:#25D366;color:#fff}
+
+@media(max-width:850px){
+  .nav-links{display:none}
+  .banner-grid,.grid-3,.grid-2,.footer-grid{grid-template-columns:1fr}
+  .banner-logo-wrap{justify-content:center}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{padding:64px 0}
+  .section{padding:60px 0}
+  .nav-inner{height:72px}
+  .nav-logo{height:48px}
+  .banner-logo-img{max-width:280px}
+  .footer-logo{max-width:220px}
+  .sticky-cta{left:12px;right:12px;bottom:12px;flex-direction:row}
+  .sticky-cta a{flex:1;padding:12px 10px}
+}
+</style>
+</head>
+<body class="home">
+
+<nav class="nav" id="site-nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#"><img src="https://136.110.12.187/wp-content/uploads/logos/TCG_Logo_Concept3.png" alt="The Clothing Guys" class="nav-logo nav-logo-hidden" id="site-nav-logo"></a>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">About</a>
+      <a href="#">Process</a>
+      <a href="#">Resources</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+      <a class="btn btn-gold" href="#">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<section class="banner" id="hero-banner">
+  <div class="container banner-grid">
+    <div class="banner-logo-wrap">
+      <img src="https://136.110.12.187/wp-content/uploads/logos/TCG_Logo_White.png" alt="The Clothing Guys" class="banner-logo-img">
+    </div>
+    <div>
+      <div class="metrics">
+        <div class="metric"><b>16+</b><span>Years Experience</span></div>
+        <div class="metric"><b>100+</b><span>Brands Served</span></div>
+        <div class="metric"><b>99%</b><span>On-Time Delivery</span></div>
+        <div class="metric"><b>50</b><span>Unit MOQ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="eyebrow">Bali-Based Garment Manufacturing</span>
+    <h1 class="h1">Premium Garment Manufacturing for Global Fashion Brands</h1>
+    <p class="lead">From concept to delivery, we manufacture premium clothing for fashion brands worldwide. Cut &amp; sew, printing, embroidery, and full production management with a 50-unit MOQ.</p>
+    <div class="btn-row btn-row-left">
+      <a class="btn btn-gold" href="#">Request a Quote</a>
+      <a class="btn btn-outline" href="#">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Full-Service Garment Manufacturing</h2>
+    <div class="gold-line"></div>
+    <div class="grid-3">
+      <div class="card"><div class="icon">C&amp;S</div><h3>Cut &amp; Sew Production</h3><p>Full cut-and-sew manufacturing for all garment types. Premium construction, consistent sizing, and quality finishing.</p><a href="#">Learn more &rarr;</a></div>
+      <div class="card"><div class="icon">P</div><h3>Printing &amp; Embroidery</h3><p>Screen printing, digital printing, DTG, sublimation, and embroidery. High-quality decoration for any design.</p><a href="#">Learn more &rarr;</a></div>
+      <div class="card"><div class="icon">S</div><h3>Sampling &amp; Development</h3><p>Pattern making, fit development, and sampling before bulk production. Refine your designs with our expert team.</p><a href="#">Learn more &rarr;</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2 class="section-title">Manufacturing for Every Category</h2>
+    <div class="gold-line"></div>
+    <div class="grid-4">
+      <a href="#" class="card-link"><div class="card card-center"><h3>Streetwear</h3><p>Hoodies, tees, joggers, outerwear</p></div></a>
+      <a href="#" class="card-link"><div class="card card-center"><h3>Activewear</h3><p>Leggings, sports bras, shorts, tops</p></div></a>
+      <a href="#" class="card-link"><div class="card card-center"><h3>Womenswear</h3><p>Dresses, blouses, skirts, resort wear</p></div></a>
+      <a href="#" class="card-link"><div class="card card-center"><h3>Uniforms</h3><p>Corporate, hospitality, workwear</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Production Capacity at Scale</h2>
+    <div class="gold-line"></div>
+    <div class="metrics">
+      <div class="metric"><b>50M+</b><span>Units Produced</span></div>
+      <div class="metric"><b>10K+</b><span>Monthly Capacity</span></div>
+      <div class="metric"><b>4-8</b><span>Weeks Lead Time</span></div>
+      <div class="metric"><b>100%</b><span>Quality Inspected</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2 class="section-title">We Manufacture for Brands In</h2>
+    <div class="gold-line"></div>
+    <div class="grid-3 mt-24">
+      <a href="#" class="card-link"><div class="card card-center"><h3>United States</h3><p>Premium offshore manufacturing for American fashion brands</p></div></a>
+      <a href="#" class="card-link"><div class="card card-center"><h3>Canada</h3><p>Quality garment production for Canadian labels</p></div></a>
+      <a href="#" class="card-link"><div class="card card-center"><h3>Australia</h3><p>Close timezone, fast shipping from Bali</p></div></a>
+      <a href="#" class="card-link"><div class="card card-center"><h3>Bali / Indonesia</h3><p>Local expertise, premium craftsmanship</p></div></a>
+      <a href="#" class="card-link"><div class="card card-center"><h3>Southeast Asia</h3><p>Regional production hub for Asian markets</p></div></a>
+      <a href="#" class="card-link"><div class="card card-center"><h3>Other Regions</h3><p>We ship globally. Request a quote for your location.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+    <div>
+      <h2 class="section-title">Download the Manufacturing Checklist</h2>
+      <div class="gold-line"></div>
+      <p class="intro">Get the production planning checklist used by serious apparel brands before starting sampling and bulk manufacturing.</p>
+    </div>
+    <form class="form">
+      <input placeholder="Brand Name">
+      <input placeholder="Email Address" type="email">
+      <select><option>Product Category</option><option>Streetwear</option><option>Activewear</option><option>Womenswear</option><option>Menswear</option><option>Uniforms</option></select>
+      <button class="btn btn-gold" type="button">Download Guide</button>
+    </form>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2 class="section-title">What Our Partners Say</h2>
+    <div class="gold-line"></div>
+    <div class="testimonial-stage">
+      <div class="testimonial active"><div class="quote-box"><div class="stars">★★★★★</div><blockquote>"Partnering with this team was one of the best branding decisions we've made for Campoli Electric. The promotional apparel exceeded our expectations in quality, fit, and overall professionalism, and it gave our team a strong, consistent presence both on-site and with clients."</blockquote><p><strong>Nat Prete</strong> — President, Campoli Electric<br><span style="color:#777">Canada</span></p></div></div>
+      <div class="testimonial"><div class="quote-box"><div class="stars">★★★★★</div><blockquote>"Excellent service, professional communication, and consistently reliable quality. The team was attentive to details and always willing to accommodate adjustments during the production process. The pricing was fair and transparent, and the entire experience was smooth, stress-free, and highly recommended."</blockquote><p><strong>Conrad</strong> — CSO, Tenplus<br><span style="color:#777">Indonesia</span></p></div></div>
+      <div class="testimonial"><div class="quote-box"><div class="stars">★★★★★</div><blockquote>"The Clothing Guys absolutely nailed it. We ordered custom T-shirts and tank tops for our business and honestly couldn't be happier. The quality was way better than we expected — very comfortable, great fit. Easy to work with, and they genuinely care about the final product."</blockquote><p><strong>Marco Presutti</strong> — Zutti Inc<br><span style="color:#777">Canada</span></p></div></div>
+      <div class="testimonial"><div class="quote-box"><div class="stars">★★★★★</div><blockquote>"Just to find a manufacturer that spoke the language, was easy to communicate, fast replies and great work above all. I was looking for a company to make samples and production and they were great all the way through."</blockquote><p><strong>Jonna Lundsten</strong> — Elephant Shoe<br><span style="color:#777">Indonesia</span></p></div></div>
+      <div class="testimonial"><div class="quote-box"><div class="stars">★★★★★</div><blockquote>"The guys are the best. Too much to say in only 3 sentences. Would definitely recommend to anyone."</blockquote><p><strong>Paul</strong> — President, Bocce Canada<br><span style="color:#777">Canada</span></p></div></div>
+      <div class="testimonial"><div class="quote-box"><div class="stars">★★★★★</div><blockquote>"Good production, good communication. They helped us with pattern and cutting on silk — exactly what we needed."</blockquote><p><strong>Cyril Chance</strong> — Chance Design<br><span style="color:#777">Indonesia</span></p></div></div>
+    </div>
+    <div class="testimonial-controls">
+      <div class="testimonial-dots">
+        <button class="testimonial-dot active" data-index="0" aria-label="Testimonial 1"></button>
+        <button class="testimonial-dot" data-index="1" aria-label="Testimonial 2"></button>
+        <button class="testimonial-dot" data-index="2" aria-label="Testimonial 3"></button>
+        <button class="testimonial-dot" data-index="3" aria-label="Testimonial 4"></button>
+        <button class="testimonial-dot" data-index="4" aria-label="Testimonial 5"></button>
+        <button class="testimonial-dot" data-index="5" aria-label="Testimonial 6"></button>
+      </div>
+      <div class="testimonial-nav">
+        <button class="btn btn-outline" onclick="prev()" type="button">Previous</button>
+        <button class="btn btn-gold" onclick="next()" type="button">Next</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="page-footer-cta">
+  <div class="container text-center">
+    <h2 class="section-title">Ready to Start Your Project?</h2>
+    <p class="intro intro-center">Get a detailed quote for your manufacturing needs. Our team will respond within 24 hours.</p>
+    <div class="btn-row">
+      <a class="btn btn-gold" href="#">Request a Quote</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <img src="https://136.110.12.187/wp-content/uploads/logos/TCG_Logo_White.png" alt="The Clothing Guys" class="footer-logo">
+      <p class="footer-desc">Premium garment manufacturing for global fashion brands. Based in Bali, Indonesia with 16+ years of experience serving 100+ brands worldwide.</p>
+    </div>
+    <div><h4>Quick Links</h4><a href="#">Services</a><a href="#">About Us</a><a href="#">Our Process</a><a href="#">Resources</a><a href="#">Blog</a><a href="#">Get a Quote</a></div>
+    <div><h4>Manufacturing For</h4><a href="#">USA Brands</a><a href="#">Canadian Brands</a><a href="#">Australian Brands</a><a href="#">Bali Manufacturing</a><a href="#">Indonesia Manufacturing</a></div>
+    <div><h4>Categories</h4><a href="#">Streetwear</a><a href="#">Activewear</a><a href="#">Womenswear</a><a href="#">Uniforms</a><h4 class="footer-contact-h4">Contact</h4><p class="footer-desc">info@theclothingguys.com</p></div>
+  </div>
+  <div class="container footer-bottom">© 2026 The Clothing Guys. All rights reserved. | <a href="#">Privacy Policy</a></div>
+</footer>
+
+<div class="sticky-cta" id="sticky-cta">
+  <a class="btn btn-gold" href="#">Request a Quote</a>
+  <a class="btn btn-whatsapp" href="#">WhatsApp</a>
+</div>
+
+<script>
+let current=0;
+const items=document.querySelectorAll('.testimonial');
+const dots=document.querySelectorAll('.testimonial-dot');
+function show(i){items[current].classList.remove('active');dots[current].classList.remove('active');current=(i+items.length)%items.length;items[current].classList.add('active');dots[current].classList.add('active')}
+function next(){show(current+1);rot()}
+function prev(){show(current-1);rot()}
+let timer;
+function rot(){if(timer)clearInterval(timer);timer=setInterval(()=>show(current+1),5000)}
+rot();
+dots.forEach(d=>d.addEventListener('click',()=>{show(parseInt(d.dataset.index,10));rot()}));
+const navLogo=document.getElementById('site-nav-logo');
+const banner=document.getElementById('hero-banner');
+if(navLogo&&banner&&'IntersectionObserver' in window){
+  new IntersectionObserver(entries=>entries.forEach(e=>navLogo.classList.toggle('nav-logo-hidden',e.isIntersecting)),{rootMargin:'-96px 0px 0px 0px',threshold:0}).observe(banner);
+}
+const sticky=document.getElementById('sticky-cta');
+const footerCta=document.getElementById('page-footer-cta');
+if(sticky&&footerCta&&'IntersectionObserver' in window){
+  new IntersectionObserver(entries=>entries.forEach(e=>sticky.classList.toggle('sticky-cta-hidden',e.isIntersecting)),{threshold:0.2}).observe(footerCta);
+}
+</script>
+</body>
+</html>
